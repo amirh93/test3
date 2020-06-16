@@ -1,0 +1,67 @@
+pipeline {
+   agent {node {label 'hasuna'} }
+   stages
+   {
+        stage('run All')
+        {
+            steps
+            {
+                script
+                {
+                    if ( env.STAGE == 'All')
+                    {
+                        echo 'select All $STAGE'
+                        sh ' whoami '
+                    }
+                }
+            }
+        }
+        stage('Execute c exe file')
+        {
+            steps
+            {
+                script
+                {
+                    if ( env.STAGE == 'C' || env.STAGE == 'All')
+                    {
+                        echo 'I run C'
+                        sh 'echo $USER'
+                        sh './exe'
+                        
+                    }
+                }
+            }
+        }
+        
+        stage('Execute Python script')
+        {
+            steps
+            {
+                script
+                {
+                    if (env.STAGE == 'Python' || env.STAGE == 'All')
+                    {
+                        echo 'I run Python'
+                        sh 'pwd'
+                        sh 'python3 py.py'
+                    } 
+                }
+            }
+        }
+        
+        stage('Execute bash script')
+        {
+            steps
+            {
+                script
+                {
+                    if (env.STAGE == 'bash' || env.STAGE == 'All')
+                    {
+                        echo 'I run bash'
+                        sh './while1.sh'
+                    }
+                }
+            }
+        }
+    }
+}
