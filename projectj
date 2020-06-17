@@ -79,11 +79,11 @@ pipeline {
                      echo user : `whoami`
                      cd Desktop
                      ls -al  
-                     whoami
-                     sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
-                     echo user : `whoami`
-                     cd Desktop
-                     ls -al > result                      
+                     whoami > result
+                     sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF >> result
+                     echo user : `whoami` >> result
+                     cd Desktop >> result
+                     ls -al >> result                      
                     '''
                  }
                }
