@@ -70,22 +70,6 @@ pipeline {
                 }
             }
         }
-        stage('Execute script')
-        {
-           steps
-           {
-               script
-               {
-                 ssh '''
-                 whoami
-                 ssh hasuna@192.168.1.18 << EOF
-                 echo user : `whoami`
-                 cd Desktop
-                 ls -al
-                 EOF
-                 '''
-               }
-            }
-         }   
+        
     }
 }
