@@ -2,6 +2,13 @@ pipeline {
    agent {node {label 'hasuna'} }
    stages
    {
+        stage('clone source')
+        {
+             steps
+             { 
+                 checkout test3
+             }
+         }    
         stage('run All')
         {
             steps
@@ -63,5 +70,22 @@ pipeline {
                 }
             }
         }
+        stage('Execute script')
+        {
+           steps
+           {
+               script
+               {
+                 ssh '''
+                 whoami
+                 ssh hasuna@192.168.1.18 << EOF
+                 echo user : `whoami`
+                 cd Desktop
+                 ls -al
+                 EOF
+                 '''
+               }
+            }
+         }   
     }
 }
