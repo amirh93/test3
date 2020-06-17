@@ -141,7 +141,7 @@ pipeline {
                 {
                   echo 'saving script proces..'
                   sh'''
-                  new_file="${HOME}/Documents/File1/repo"
+                  new_file1="${HOME}/Documents/File1/repo"
                   mkdir -p ${HOME}/Documents/File1                
                   if [ -f "${new_file1}" ]; then
                     echo "file ${new_file1} exist"                                    
