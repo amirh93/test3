@@ -73,7 +73,7 @@ pipeline {
                  {
                     sh '''
                      pwd
-                     cd ${workspace}/projact_final/log
+                     cd ${workspace}/log
                      pwd
                      whoami
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
@@ -103,7 +103,7 @@ pipeline {
                else
                  touch ${new_file}
                fi
-               cat ${workspace}/projact_final/log/result >> ${new_file}
+               cat ${workspace}/log/result >> ${new_file}
                echo "++++++++++++++++++++++" >> ${new_file}
                '''
             }
