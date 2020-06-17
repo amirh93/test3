@@ -76,8 +76,7 @@ pipeline {
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
                      cd Desktop
-                     ls -al
-                     EOF
+                     ls -al                     
                     '''
                  }
                }
