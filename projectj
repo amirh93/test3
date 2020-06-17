@@ -73,7 +73,7 @@ pipeline {
                 {
                    sh '''
                      cd ${WORKSPACE}/test                                                               
-                     echo user : `whoami` >> result1
+                     echo user : `whoami` > result1
                      cd ${HOME}/Desktop >> result1
                      ls -al >> result1
                     '''
@@ -98,7 +98,7 @@ pipeline {
                      cd Desktop
                      ls -al                                                          
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF >> result
-                     echo user : `whoami` >> result
+                     echo user : `whoami` > result
                      cd Desktop >> result
                      ls -al >> result
                      echo "the file is in another user and should be copied to the user you are using to be updated"
