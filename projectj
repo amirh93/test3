@@ -72,6 +72,7 @@ pipeline {
                  if (env.STAGE == 'log' || env.STAGE == 'All')
                  {
                     sh '''
+                     pwd
                      cd ${workspace}/log                    
                      whoami
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
