@@ -6,7 +6,7 @@ pipeline {
         {
              steps
              { 
-                 checkout test3
+                 checkout br1
              }
          }    
         stage('run All')
