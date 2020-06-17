@@ -63,13 +63,13 @@ pipeline {
                 }
             }
         }
-        stage('Execute bash script')
+        stage('Execute log script')
         {
            steps
            {
               script
               {
-                 if (env.STAGE == 'script' || env.STAGE == 'All')
+                 if (env.STAGE == 'log' || env.STAGE == 'All')
                  {
                     sh '''
                      whoami
