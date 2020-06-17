@@ -78,12 +78,7 @@ pipeline {
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
                      cd Desktop
-                     ls -al  
-                     whoami > result
-                     sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF >> result
-                     echo user : `whoami` >> result
-                     cd Desktop >> result
-                     ls -al >> result                      
+                     ls -al                       
                     '''
                  }
                }
@@ -102,6 +97,12 @@ pipeline {
                else
                  touch ${new_file}
                fi
+               cd /home/hasuna/workspace/projact_final/test                    
+               whoami
+               sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
+               echo user : `whoami`
+               cd Desktop
+               ls -al  
                cat /home/hasuna/workspace/projact_final/test/result >> ${new_file}
                echo "++++++++++++++++++++++" >> ${new_file}
                '''
