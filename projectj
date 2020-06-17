@@ -73,12 +73,16 @@ pipeline {
                  {
                     sh '''
                      pwd
-                     cd /home/hasuna/workspace/projact_final/test                    
-                     whoami
+                     cd /home/hasuna/workspace/projact_final/test                                        
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
                      cd Desktop
-                     ls -al                       
+                     ls -al                                      
+                     whoami > result
+                     sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF >> result
+                     echo user : `whoami` >> result
+                     cd Desktop >> result
+                     ls -al >> result
                     '''
                  }
                }
@@ -96,13 +100,7 @@ pipeline {
                  echo "file ${new_file} exist"
                else
                  touch ${new_file}
-               fi
-               cd /home/hasuna/workspace/projact_final/test                    
-               whoami
-               sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
-               echo user : `whoami`
-               cd Desktop
-               ls -al  
+               fi  
                cat /home/hasuna/workspace/projact_final/test/result >> ${new_file}
                echo "++++++++++++++++++++++" >> ${new_file}
                '''
