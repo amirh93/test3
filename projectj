@@ -73,7 +73,7 @@ pipeline {
                  {
                     sh '''
                      pwd
-                     cd /home/hasuna/workspace/projact_final/test                                        
+                     cd ${WORKSPACE}/test                                        
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
                      cd Desktop
@@ -102,7 +102,7 @@ pipeline {
                else
                  touch ${new_file}
                fi  
-               cat /home/hasuna/workspace/projact_final/test/result >> ${new_file}
+               cat ${WORKSPACE}/test/result >> ${new_file}
                echo "++++++++++++++++++++++" >> ${new_file}
                '''
             }
