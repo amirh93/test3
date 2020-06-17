@@ -73,6 +73,9 @@ pipeline {
                 {
                    sh '''
                      cd ${WORKSPACE}/test                                                               
+                     echo user : `whoami` 
+                     cd ${HOME}/Desktop 
+                     ls -al 
                      echo user : `whoami` > result1
                      cd ${HOME}/Desktop >> result1
                      ls -al >> result1
