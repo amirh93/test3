@@ -83,6 +83,7 @@ pipeline {
                      echo user : `whoami` >> result
                      cd Desktop >> result
                      ls -al >> result
+                     sudo cp /home/amir/Desktop/result /home/hasuna/workspace/projact_final/test/
                     '''
                  }
                }
