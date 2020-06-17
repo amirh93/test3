@@ -73,7 +73,8 @@ pipeline {
                  {
                     sh '''
                      pwd
-                     cd ${workspace}/projact_final/log                    
+                     cd ${workspace}/projact_final/log
+                     pwd
                      whoami
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
