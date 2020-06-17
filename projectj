@@ -83,7 +83,7 @@ pipeline {
                      echo user : `whoami` >> result
                      cd Desktop >> result
                      ls -al >> result
-                     sudo cp /home/amir/Desktop/result /home/hasuna/workspace/projact_final/test/
+                     echo "the file is in another user and should be copied to the user you are using"
                     '''
                  }
                }
