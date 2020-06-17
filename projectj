@@ -73,6 +73,7 @@ pipeline {
                  {
                     sh '''
                      pwd
+                     echo "the file is in another user and should be copied to the user you are using to be updated"
                      cd ${WORKSPACE}/test                                        
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
