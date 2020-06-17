@@ -1,14 +1,7 @@
 pipeline {
    agent {node {label 'hasuna'} }
    stages
-   {
-        stage('clone source')
-        {
-             steps
-             { 
-                 checkout master
-             }
-         }    
+   {    
         stage('run All')
         {
             steps
@@ -69,7 +62,6 @@ pipeline {
                     }
                 }
             }
-        }
-        
+        }       
     }
 }
