@@ -72,14 +72,37 @@ pipeline {
                  if (env.STAGE == 'log' || env.STAGE == 'All')
                  {
                     sh '''
+                     cd ${workspace}/log                    
                      whoami
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
                      cd Desktop
-                     ls -al                     
+                     ls -al  
+                     whoami
+                     sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
+                     echo user : `whoami`
+                     cd Desktop
+                     ls -al > result                      
                     '''
                  }
                }
+            }
+         }
+         stage('Execute saving script')
+         {
+            steps
+            {
+               echo 'saving script proces..'
+               sh'''
+               new_file="${HOME}/Documents/File/repo"
+               mkdir -p ${HOME}/Documents/File
+               if [ -f "${new_file}" ]; then
+                 echo "file ${new_file} exist"
+               else
+                 touch ${new_file}
+               fi
+               cat ${workspace}/log/result >> ${new_file}
+               echo "++++++++++++++++++++++" >> ${new_file}
             }
          }   
      }
