@@ -63,6 +63,21 @@ pipeline {
                 }
             }
         }
+        stage('Execute log1 script')
+        {
+           steps
+           {
+             script
+             {
+                if (env.STAGE == 'log' || env.STAGE == 'All')
+                {
+                   sh '''
+                     cd ${WORKSPACE}/test                       
+                     whoami > result1                    
+                     echo user : `whoami` >> result1
+                     cd Desktop >> result1
+                     ls -al >> result1
+        
         stage('Execute log script')
         {
            steps
@@ -108,7 +123,8 @@ pipeline {
                     touch ${new_file}
                   fi  
                   cat ${WORKSPACE}/test/result >> ${new_file}
-                  echo "++++++++++++++++++++++" >> ${new_file}
+                  cat ${WORKSPACE}/test/result1 >> ${new_file}
+                  echo "++++++++++++++++++++++" >> ${new_file}          
                   '''
                  }
                }
