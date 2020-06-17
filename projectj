@@ -83,7 +83,7 @@ pipeline {
                      echo user : `whoami` >> result
                      cd Desktop >> result
                      ls -al >> result
-                     echo "the file is in another user and should be copied to the user you are using"
+                     echo "the file is in another user and should be copied to the user you are using to be updated"
                     '''
                  }
                }
