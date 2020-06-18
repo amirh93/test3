@@ -1,5 +1,8 @@
 pipeline {
    agent {node {label 'hasuna'} }
+   environment {
+      secret = credentials('SECRET_TEXT')
+   }
    stages
    {    
         stage('run All')
@@ -101,12 +104,12 @@ pipeline {
                      echo "the file is in another user and should be copied to the user you are using to be updated"
                      cd ${WORKSPACE}/test                                        
                      whoami
-                     sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
+                     sshpass -p 'echo $secret' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
                      cd Desktop
                      ls -al
                      whoami > result
-                     sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF >> result
+                     sshpass -p 'echo $secret' ssh amir@192.168.1.18 << EOF >> result
                      echo user : `whoami` >> result
                      cd Desktop >> result
                      ls -al >> result
