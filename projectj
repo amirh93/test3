@@ -105,12 +105,12 @@ pipeline {
                      cd ${WORKSPACE}/test                                        
                      whoami
                     echo $secret
-                    sshpass -p '$secret' ssh amir@192.168.1.18 << EOF
+                    sshpass -p ''echo $secret'' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
                      cd Desktop
                      ls -al                     
                      whoami > result
-                     sshpass -p '$secret' ssh amir@192.168.1.18 << EOF >> result
+                     sshpass -p ''echo $secret'' ssh amir@192.168.1.18 << EOF >> result
                      echo user : `whoami` >> result
                      cd Desktop >> result
                      ls -al >> result
