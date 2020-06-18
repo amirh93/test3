@@ -75,13 +75,11 @@ pipeline {
                      cd ${WORKSPACE}/test                                                               
                      whoami
                      echo user : `whoami` 
-                     cd ${HOME}/Desktop 
-                     ls -al 
-                     pwd
-                     touch result2
-                     whoami >> result2
+                     cd Desktop 
+                     ls -al                                        
+                     whoami << EOF > result2
                      echo user : `whoami` >> result2
-                     cd ${HOME}/Desktop >> result2
+                     cd Desktop >> result2
                      ls -al >> result2
                     '''
                  }
