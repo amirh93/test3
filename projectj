@@ -106,7 +106,7 @@ pipeline {
                      cd ${WORKSPACE}/test                                        
                      whoami
                      echo $secret                    
-                     sshpass -p ''echo $SECRET_TEXT'' ssh amir@192.168.1.18 << EOF                   
+                     sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF                   
                      echo user : `whoami`
                      cd Desktop
                      ls -al                     
