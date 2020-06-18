@@ -10,7 +10,7 @@ pipeline {
                 {
                     if ( env.STAGE == 'All')
                     {
-                        echo 'I use $OS'
+                        sh 'echo I use $OS'
                         echo 'select All $STAGE'
                         sh ' whoami '
                     }
