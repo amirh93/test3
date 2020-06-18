@@ -79,7 +79,7 @@ pipeline {
                      cd Desktop 
                      ls -al                      
                      whoami  > result2
-                     cd ${HOME}/Desktop << EOf
+                     cd ${HOME}/Desktop << EOf >> result2
                      echo user : `whoami` >> result2
                      cd Desktop >> result2
                      ls -al >> result2
