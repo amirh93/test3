@@ -74,15 +74,16 @@ pipeline {
                    sh '''
                      cd ${WORKSPACE}/test                                                               
                      whoami
-                     cd ${HOME}/Desktop << EOF
+                     cd ${HOME}/Desktop 
                      echo user : `whoami` 
                      cd Desktop 
                      ls -al                      
                      whoami  > result2
-                     cd ${HOME}/Desktop << EOF >> result2
+                     cd ${HOME}/Desktop  >> result2
                      echo user : `whoami` >> result2
                      cd Desktop >> result2
                      ls -al >> result2
+                     cp ${HOME}/Desktop/result2 /${WORKSPACE}/test/
                     '''
                  }
                }
