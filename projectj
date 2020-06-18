@@ -73,12 +73,14 @@ pipeline {
                 {
                    sh '''
                      cd ${WORKSPACE}/test                                                               
+                     whoami
                      echo user : `whoami` 
                      cd ${HOME}/Desktop 
                      ls -al 
-                     echo user : `whoami` > result1
-                     cd ${HOME}/Desktop >> result1
-                     ls -al >> result1
+                     whoami > result2
+                     echo user : `whoami` >> result2
+                     cd ${HOME}/Desktop >> result2
+                     ls -al >> result2
                     '''
                  }
                }
@@ -96,10 +98,12 @@ pipeline {
                      pwd
                      echo "the file is in another user and should be copied to the user you are using to be updated"
                      cd ${WORKSPACE}/test                                        
+                     whoami
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
                      cd Desktop
-                     ls -al                                                          
+                     ls -al
+                     whoami > result
                      sshpass -p 'amir1993' ssh amir@192.168.1.18 << EOF >> result
                      echo user : `whoami` >> result
                      cd Desktop >> result
@@ -151,7 +155,7 @@ pipeline {
                   else
                     touch ${new_file1}                    
                   fi  
-                  cat ${WORKSPACE}/test/result1 >> ${new_file1}                  
+                  cat ${WORKSPACE}/test/result2 >> ${new_file1}                  
                   echo "++++++++++++++++++++++" >> ${new_file1}          
                   '''
                  }
