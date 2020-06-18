@@ -77,7 +77,9 @@ pipeline {
                      echo user : `whoami` 
                      cd ${HOME}/Desktop 
                      ls -al 
-                     whoami > result2
+                     pwd
+                     touch result2
+                     whoami >> result2
                      echo user : `whoami` >> result2
                      cd ${HOME}/Desktop >> result2
                      ls -al >> result2
