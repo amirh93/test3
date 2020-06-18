@@ -104,10 +104,11 @@ pipeline {
                      echo "the file is in another user and should be copied to the user you are using to be updated"
                      cd ${WORKSPACE}/test                                        
                      whoami
-                     sshpass -p 'echo $secret' ssh amir@192.168.1.18 << EOF
+                    echo $secret
+                    sshpass -p 'echo $secret' ssh amir@192.168.1.18 << EOF
                      echo user : `whoami`
                      cd Desktop
-                     ls -al
+                     ls -al                     
                      whoami > result
                      sshpass -p 'echo $secret' ssh amir@192.168.1.18 << EOF >> result
                      echo user : `whoami` >> result
